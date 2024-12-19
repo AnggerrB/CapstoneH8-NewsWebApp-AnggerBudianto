@@ -34,7 +34,7 @@ const BookmarksPage = () => {
   };
 
   return (
-    <div className="container mx-auto px-4 py-6">
+    <div className="container mx-auto px-4 py-6 text-center">
       <h1 className="text-2xl font-bold mb-4">Bookmarks</h1>
       {bookmarkedNews.length === 0 ? (
         <p className="text-gray-600">No news saved</p>

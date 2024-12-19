@@ -4,6 +4,7 @@ import { useState } from "react";
 import { setNotification } from "../../store/reducers/notificationReducer";
 import Search from "./Search/Search";
 import "../../index.css";
+import icon from "../../assets/favicon.png";
 
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -25,10 +26,18 @@ const Navbar = () => {
   const isActive = (path) => location.pathname === path;
 
   return (
-    <nav className="bg-blue-500 shadow-md fixed top-0 left-0 w-full z-50">
+    <nav className="bg-slate-700 shadow-md fixed top-0 left-0 w-full z-50">
       <div className="container mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo Brand */}
-        <div className="text-white text-2xl font-bold">ZzaNews</div>
+        <Link to="/homePage" className="text-white text-2xl font-bold flex">
+          <img className="w-10" src={icon} />
+          GerrNews
+        </Link>
+
+        {/* Search Bar for Desktop */}
+        <div className="hidden md:flex flex-grow justify-center">
+          <Search className="w-1/2" />
+        </div>
 
         {/* Hamburger Button */}
         <button
@@ -55,10 +64,9 @@ const Navbar = () => {
         <div
           className={`${
             isMenuOpen ? "block" : "hidden"
-          } xl:ml-16 xl:w-full xl:flex xl:justify-center md:flex md:items-center md:w-auto`}
+          } xl:ml-16 xl:w-full xl:flex xl:justify-end md:flex md:items-center md:w-auto`}
         >
-          <div className="flex flex-col md:flex-row md:items-center md:space-x-4 bg-blue-500 md:bg-transparent fixed md:static top-16 left-0 w-full md:w-auto h-screen md:h-auto overflow-y-auto md:overflow-visible space-y-4 md:space-y-0 px-6 md:px-0 pt-4 md:pt-0">
-            {/* Links */}
+          <div className="flex bg-slate-700 mr-10 flex-col md:flex-row md:items-center md:space-x-4 md:bg-transparent fixed md:static top-16 left-0 w-full md:w-auto h-screen md:h-auto overflow-y-auto md:overflow-visible space-y-4 md:space-y-0 px-6 md:px-0 pt-4 md:pt-0">
             {[
               "/homePage",
               "/indonesiaPage",
@@ -77,7 +85,7 @@ const Navbar = () => {
                 <Link
                   key={path}
                   to={path}
-                  className={`relative text-white hover:text-gray-200 flex items-center ${
+                  className={`relative text-white hover:text-gray-200 flex items-center transform transition-transform duration-300 hover:-translate-y-1 ${
                     isActive(path) ? "font-bold" : ""
                   }`}
                   onClick={
@@ -103,9 +111,10 @@ const Navbar = () => {
                 </Link>
               );
             })}
-            {/* Search Bar */}
-            <div className="xl:relative xl:left-40">
-              <Search />
+
+            {/* Search Bar for Mobile */}
+            <div className="block md:hidden w-full xl:ml-10">
+              <Search className="w-full ml-10" />
             </div>
           </div>
         </div>

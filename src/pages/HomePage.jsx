@@ -27,7 +27,9 @@ const HomePage = () => {
 
   return (
     <div className="container mx-auto px-4 py-6">
-      <h1 className="text-2xl font-bold mb-4 text-center">Random News Today</h1>
+      <h1 className="text-2xl font-bold mb-4 text-center">
+        News - Top World Headlines
+      </h1>
       {loading ? (
         <div className="text-center">Loading...</div>
       ) : news.length > 0 ? (
