@@ -4,7 +4,7 @@ const Footer = () => {
       <div className="container mx-auto text-center">
         {/* Copyright */}
         <p className="text-sm">
-          © {new Date().getFullYear()} NewsApp. All Rights Reserved.
+          © {new Date().getFullYear()} GerNews. All Rights Reserved.
         </p>
       </div>
     </footer>
